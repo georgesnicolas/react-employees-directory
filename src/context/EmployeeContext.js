@@ -15,7 +15,7 @@ const EmployeeContextProvider = (props) => {
                 setEmployees(result)
             }
         })
-    }, [])//[] because we need to fire this one time when the component loads only 
+    }, [])
 
     useEffect(() => {
         setEmployees(JSON.parse(localStorage.getItem('employees')))

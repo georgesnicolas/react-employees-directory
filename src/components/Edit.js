@@ -1,17 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-
 import { useHistory } from "react-router-dom";
 
 
-
 function Edit() {
-    const history = useHistory();
     const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employees')))
-
     const uuid = useParams().id
-
     const employee = employees.find( emp => emp.login.uuid == uuid)
     const [title, setTitle] = useState(employee.name.title);
     const [first, setFirst] = useState(employee.name.first);
@@ -60,11 +54,10 @@ function Edit() {
           "medium": "https://randomuser.me/api/portraits/med/men/20.jpg",
           "thumbnail": "https://randomuser.me/api/portraits/thumb/men/20.jpg"
         }
-      }
+    }
     const submit = (e) => {
         e.preventDefault();
         setEmployees(employees.map((employee) => employee.login.uuid == uuid ? updatedEmployee : employee))
-        // localStorage.setItem('employees',JSON.stringify(employees))
     }
     useEffect(() => {
       localStorage.setItem('employees',JSON.stringify(employees))

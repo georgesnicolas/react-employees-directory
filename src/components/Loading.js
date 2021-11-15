@@ -1,4 +1,3 @@
-
 function Loading() {
     return (
         <div className="spinner-border position-absolute top-50 start-50" role="status">
@@ -6,6 +5,5 @@ function Loading() {
         </div>
     );
   }
-  
   export default Loading;
   

@@ -1,5 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { NavLink, Route } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
 import './Navbar.css'
 import $ from 'jquery'
 

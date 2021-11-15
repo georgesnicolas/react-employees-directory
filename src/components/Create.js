@@ -1,15 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import axios from 'axios';
-import Loading from './Loading'
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid'
-// import { useContext } from 'react'
-// import { EmployeeContext } from '../context/EmployeeContext';
-
-import { Link,useHistory } from "react-router-dom";
-import { connect } from "react-redux";
 
 function Create() {
-    // const {employees} = useContext(EmployeeContext)
     const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employees')))
 
     const [newEmployee, setNewEmployee] = useState({

@@ -1,14 +1,10 @@
-import { BrowserRouter as Router, Route,Switch,NavLink } from 'react-router-dom'
-import React, { Fragment, useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loading from './Loading';
-import Edit from './Edit';
 import Pagination from './Pagination';
-// import { useContext } from 'react'
-// import {EmployeeContext} from '../context/EmployeeContext';
 
 function List() {
-  
   const [employees, setEmployees] = useState([])
   const [searchflag, setSearchFlag] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
@@ -29,7 +25,6 @@ function List() {
         setEmployees(JSON.parse(localStorage.getItem('employees')))
       }
     }
-
     fetchPosts()
   }, [])
  
@@ -74,15 +69,10 @@ function List() {
   }
 
   const currentEmployees = employees.slice(indexOfFirstPost,indexOfLastPost) 
-
   const deleteEmployee = (uuid) => {
     setEmployees(employees.filter(employee => employee.login.uuid !== uuid))
   }  
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
-
-
-  
 
   return (
         <>
