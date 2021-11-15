@@ -49,9 +49,8 @@ function List() {
   };
   function sortedEmployees(){
     var groupedPeople = groupArrayOfObjects(employees,"gender")
-    // var ret = [].concat(groupedPeople.male, groupedPeople.female)
-    // setEmployees(ret)
-    console.log(groupedPeople);
+    var ret = [].concat(groupedPeople.male, groupedPeople.female)
+    setEmployees(ret)
   }
 
   const currentEmployees = employees.slice(indexOfFirstPost,indexOfLastPost) 
@@ -69,8 +68,6 @@ function List() {
         <>
           <div className="row">
           <div className="btn-group mb-3" role="group" aria-label="Basic example">
-              <button onClick={() => sortedEmployees()} type="button" className="btn btn-secondary">sort by gender</button>
-              <button onClick={() => sortedEmployees()} type="button" className="btn btn-secondary">sort by gender</button>
               <button onClick={() => sortedEmployees()} type="button" className="btn btn-secondary">sort by gender</button>
           </div>
           <Pagination postsPerPage={postsPerPage} totalPosts={employees.length} paginate={paginate} />
