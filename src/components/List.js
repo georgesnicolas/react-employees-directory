@@ -48,12 +48,12 @@ function List() {
       (rv[x[key]] = rv[x[key]] || []).push(x);
       return rv;
     }, {});
-  };
-  function sortedEmployees(){
-    var groupedPeople = groupArrayOfObjects(employees,"gender")
-    var ret = [].concat(groupedPeople.male, groupedPeople.female)
-    setEmployees(ret)
+  }
 
+  function sortedEmployees() {
+      var groupedPeople = groupArrayOfObjects(JSON.parse(localStorage.getItem('employees')),"gender")
+      var ret = [].concat(groupedPeople.male, groupedPeople.female)
+      setEmployees(ret)
   }
 
   function search(str) {
