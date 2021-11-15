@@ -10,7 +10,7 @@ import Pagination from './Pagination';
 function List() {
   
   const [employees, setEmployees] = useState([])
-
+  const [searchflag, setSearchFlag] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(4)
   
@@ -34,7 +34,9 @@ function List() {
   }, [])
  
   useEffect(() => {
-    localStorage.setItem('employees',JSON.stringify(employees))
+    if(searchflag){
+      localStorage.setItem('employees',JSON.stringify(employees))
+    }
   }, [employees])
   
 
@@ -51,6 +53,24 @@ function List() {
     var groupedPeople = groupArrayOfObjects(employees,"gender")
     var ret = [].concat(groupedPeople.male, groupedPeople.female)
     setEmployees(ret)
+
+  }
+
+  function search(str) {
+    var elements = [];
+    employees.forEach(element => {
+      if(element.name.first.toLowerCase().includes(str))
+      {
+        elements.push(element) 
+      }
+    });
+    if(str == ''){
+      setEmployees(JSON.parse(localStorage.getItem('employees')))
+      setSearchFlag(true)
+    }else{
+      setSearchFlag(false)
+      setEmployees(elements)
+    }
   }
 
   const currentEmployees = employees.slice(indexOfFirstPost,indexOfLastPost) 
@@ -69,6 +89,9 @@ function List() {
           <div className="row">
           <div className="btn-group mb-3" role="group" aria-label="Basic example">
               <button onClick={() => sortedEmployees()} type="button" className="btn btn-secondary">sort by gender</button>
+
+              <input type="text" className="form-control" id="formGroupExampleInput" placeholder="first name filter" onChange = { (e) => search(e.target.value)} />
+
           </div>
           <Pagination postsPerPage={postsPerPage} totalPosts={employees.length} paginate={paginate} />
             { employees ? <>

@@ -21,6 +21,7 @@ function Edit() {
     const [city, setCity] = useState(employee.location.city);
 
     const updatedEmployee = {
+        "gender":employee.gender,
         "name": {
           "title": title,
           "first": first,

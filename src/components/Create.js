@@ -25,6 +25,7 @@ function Create() {
     const submit = (e) => {
         e.preventDefault()
         setEmployees( [...employees , {
+            "gender":"male",
             "name": {
               "title": newEmployee.title,
               "first": newEmployee.first,
